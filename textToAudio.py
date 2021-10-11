@@ -16,10 +16,10 @@ for voice in client.list_voices().voices:
 df_voice_list = pd.DataFrame(voice_list, columns=['name', 'language code', 'ssml gender', 'hertz rate']).to_csv('Voice List.csv', index=False)
 
 # Set the text input to be synthesized
-# f = open("C:\Users\amity\Desktop\Personal\PDF2Audio\PDF2Audio\Martha.txt")
-file = open(r"C:\Users\amity\Desktop\Personal\PDF2Audio\PDF2Audio\HC\HC.txt", encoding="utf8")
+file = open(r"C:\Users\x\Desktop\Personal\PDF2Audio\PDF2Audio\HC\HC.txt", encoding="utf8") # Replace the string in the quotations with your path
 quote = file.read()
-lines = textwrap.wrap(quote, 4999, break_long_words=False)
+# google's tts api only allows 5000 chars at once, so break down the input text into separate strings of 5k chars
+lines = textwrap.wrap(quote, 4999, break_long_words=False) 
 
 i = 0
 for quote in lines:
@@ -43,7 +43,8 @@ for quote in lines:
     input=synthesis_input, voice=voice, audio_config=audio_config
     )
     # The response's audio_content is binary.
-    with open(r"C:\Users\amity\Desktop\Personal\PDF2Audio\PDF2Audio\HC\output%s.mp3" % i, "wb") as out:
+    # Replace the string in the quotations with your path. This command will create outputx.mp3 under C:\Users\x\Desktop\Personal\PDF2Audio\PDF2Audio\HC\ 
+    with open(r"C:\Users\x\Desktop\Personal\PDF2Audio\PDF2Audio\HC\output%s.mp3" % i, "wb") as out: 
     # Write the response to the output file.
         out.write(response.audio_content)
         print('Audio content written to file "output.mp3"')
