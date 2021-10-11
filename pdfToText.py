@@ -6,7 +6,10 @@ from google.protobuf import json_format
 
 """ 
 # pip install --upgrade google-cloud-storage
+# you are gonna need to setup your cloud storage bucket. Google how to do it. 
 """
+
+# Google how to create and download a service key. 
 os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'storageServiceKey.json'
 client = vision_v1.ImageAnnotatorClient()
 
